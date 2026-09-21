@@ -1,0 +1,11 @@
+{
+	"extends": "@cellix/config-typescript/node",
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "src",
+		"tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["scripts/**"],
+	"references": [{ "path": "../../cellix/serenity-framework" }]
+}

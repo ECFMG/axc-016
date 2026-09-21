@@ -1,0 +1,10 @@
+{
+	"extends": "@cellix/config-typescript/node",
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "src",
+		"tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+	},
+	"include": ["src/**/*.ts"],
+	"references": [{ "path": "../../packages/cellix/api-core" }, { "path": "../../packages/axc/application-services" }, { "path": "../../packages/axc/rest" }]
+}

@@ -1,0 +1,52 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "stream",
+	"globalPassThroughEnv": ["WORKTREE_NAME", "AXC_ENVIRONMENT", "AXC_LOCAL_RUNTIME", "PORT", "PORTLESS_CA_PATH", "CI", "SNYK_TOKEN"],
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**", "build/**", "deploy/**"],
+			"cache": false
+		},
+		"compile": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"],
+			"cache": false
+		},
+		"typecheck": {
+			"dependsOn": ["^build"],
+			"cache": false
+		},
+		"test": {
+			"dependsOn": ["^build", "@cellix/config-vitest#build"],
+			"cache": false
+		},
+		"test:arch": {
+			"dependsOn": ["^build", "@cellix/archunit-tests#build", "@cellix/config-vitest#build"],
+			"cache": false
+		},
+		"test:acceptance": {
+			"dependsOn": ["@cellix/serenity-framework#build", "@apps/api#build"],
+			"outputs": ["target/**"],
+			"cache": false
+		},
+		"dev": {
+			"dependsOn": ["^build"],
+			"cache": false,
+			"persistent": true,
+			"interruptible": true,
+			"inputs": ["$TURBO_DEFAULT$", "../../packages/axc/**/src/**", "../../packages/cellix/api-core/src/**", "start-dev.ts"]
+		},
+		"start": {
+			"dependsOn": ["build"],
+			"cache": false,
+			"persistent": true
+		},
+		"//#check-scripts": { "cache": false },
+		"//#biome": { "cache": false },
+		"//#knip": { "cache": false },
+		"//#e18e": { "cache": false },
+		"//#audit": { "cache": false },
+		"//#snyk": { "cache": false }
+	}
+}

@@ -1,0 +1,11 @@
+# MCP servers for agentCourses. Organization slug: agentcourses.
+# BothyBoard requests need a project-scoped PAT in the Authorization header.
+
+[mcp_servers.e18e]
+command = "pnpm"
+args = ["dlx", "@e18e/mcp"]
+enabled = true
+
+[mcp_servers.bothy-board]
+url = "https://bothyboard.com/api/mcp"
+enabled = true

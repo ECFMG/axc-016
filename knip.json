@@ -1,0 +1,18 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"ignore": ["**/dist/**", "**/coverage/**", "**/target/**", "**/fixtures/**", "**/*.test.ts", ".agents/**", ".grok/**", "**/deploy/**", "**/build/**", "vendor/**"],
+	"ignoreDependencies": ["portless", "@serenity-js/serenity-bdd", "@vitest/coverage-istanbul", "@e18e/mcp", "@types/semver", "@testing-library/react", "playwright", "react"],
+	"ignoreUnresolved": ["summary"],
+	"exclude": ["exports", "types", "nsExports", "nsTypes"],
+	"workspaces": {
+		".": {
+			"entry": ["portless.config.cjs", "scripts/**/*.mjs"]
+		},
+		"apps/api": {
+			"entry": ["src/index.ts", "start-dev.ts", "rolldown.config.ts", "scripts/*.mjs"]
+		},
+		"apps/docs": {
+			"entry": ["src/health-contract.ts"]
+		}
+	}
+}

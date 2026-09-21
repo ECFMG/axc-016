@@ -1,0 +1,27 @@
+{
+	"name": "@axc-verification/acceptance-api",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"description": "Serenity/Cucumber acceptance tests for the agentCourses API",
+	"type": "module",
+	"scripts": {
+		"build": "tsc -b --pretty false",
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json",
+		"test:acceptance": "NODE_OPTIONS='--import tsx' cucumber-js --config cucumber.js && node scripts/serenity-html.mjs"
+	},
+	"dependencies": {
+		"@cellix/serenity-framework": "workspace:*",
+		"@cucumber/cucumber": "catalog:",
+		"@serenity-js/assertions": "catalog:",
+		"@serenity-js/core": "catalog:",
+		"@serenity-js/cucumber": "catalog:",
+		"@serenity-js/serenity-bdd": "catalog:"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@types/node": "catalog:",
+		"tsx": "catalog:",
+		"typescript": "catalog:"
+	}
+}

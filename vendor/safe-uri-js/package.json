@@ -1,0 +1,8 @@
+{
+  "name": "@axc/safe-uri-js",
+  "version": "1.0.0",
+  "private": true,
+  "description": "uri-js 4.4.1 with the U+2028/U+2029 removeDotSegments loop closed",
+  "main": "dist/es5/uri.all.js",
+  "license": "BSD-2-Clause"
+}

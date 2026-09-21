@@ -1,0 +1,23 @@
+{
+	"name": "@axc/persistence",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"description": "Persistence extension point for agentCourses.",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc -b --pretty false",
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@types/node": "catalog:",
+		"typescript": "catalog:"
+	}
+}

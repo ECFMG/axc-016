@@ -1,0 +1,25 @@
+{
+	"name": "@cellix/config-typescript",
+	"version": "1.0.3",
+	"private": true,
+	"main": "./tsconfig.base.json",
+	"files": [
+		"tsconfig.base.json",
+		"tsconfig.node.json",
+		"tsconfig.vitest.json"
+	],
+	"scripts": {
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json",
+		"build": "tsc -b --pretty false"
+	},
+	"exports": {
+		"./base": "./tsconfig.base.json",
+		"./node": "./tsconfig.node.json",
+		"./vitest": "./tsconfig.vitest.json"
+	},
+	"devDependencies": {
+		"typescript": "catalog:",
+		"@types/node": "catalog:"
+	},
+	"type": "module"
+}

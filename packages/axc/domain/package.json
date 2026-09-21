@@ -1,0 +1,23 @@
+{
+	"name": "@axc/domain",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"description": "Domain extension point for agentCourses. No infrastructure imports.",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc -b --pretty false",
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@types/node": "catalog:",
+		"typescript": "catalog:"
+	}
+}

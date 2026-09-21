@@ -1,0 +1,28 @@
+{
+	"name": "@apps/api",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"compile": "tsc -b --pretty false",
+		"build": "pnpm run compile && rolldown -c rolldown.config.ts && cellix-prepare-func-deploy && node scripts/zip-functions.mjs",
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json",
+		"dev": "node scripts/dev-host.mjs",
+		"start": "node scripts/start-built.mjs"
+	},
+	"dependencies": {
+		"@axc/application-services": "workspace:*",
+		"@axc/rest": "workspace:*",
+		"@cellix/api-core": "workspace:*"
+	},
+	"devDependencies": {
+		"@cellix/config-rolldown": "workspace:*",
+		"@cellix/config-typescript": "workspace:*",
+		"@cellix/local-dev": "workspace:*",
+		"@types/node": "catalog:",
+		"rolldown": "1.0.0-beta.55",
+		"typescript": "catalog:"
+	}
+}

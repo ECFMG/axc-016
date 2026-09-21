@@ -1,0 +1,26 @@
+{
+	"name": "@apps/docs",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"build": "docusaurus build",
+		"typecheck": "tsc --noEmit --pretty false -p tsconfig.json",
+		"dev": "docusaurus start --host 127.0.0.1 --no-open",
+		"start": "docusaurus serve --host 127.0.0.1 --no-open"
+	},
+	"dependencies": {
+		"@docusaurus/core": "3.10.2",
+		"@docusaurus/preset-classic": "3.10.2",
+		"react": "catalog:",
+		"react-dom": "catalog:"
+	},
+	"devDependencies": {
+		"@docusaurus/module-type-aliases": "3.10.2",
+		"@docusaurus/types": "3.10.2",
+		"@types/node": "catalog:",
+		"typescript": "catalog:",
+		"@docusaurus/plugin-content-docs": "3.10.2"
+	}
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@axc/safe-http-cache-semantics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "http-cache-semantics 4.2.0 with Vary * and Authorization checks tightened",
+  "main": "index.js",
+  "license": "BSD-2-Clause"
+}

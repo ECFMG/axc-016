@@ -1,0 +1,37 @@
+{
+	"name": "agentcourses",
+	"version": "1.0.0",
+	"private": true,
+	"description": "agentCourses (axc) dark software factory scaffold",
+	"type": "module",
+	"license": "MIT",
+	"packageManager": "pnpm@11.12.0",
+	"engines": {
+		"node": ">=24"
+	},
+	"scripts": {
+		"preinstall": "node scripts/only-pnpm.mjs",
+		"prepare": "husky",
+		"dev": "turbo watch dev --filter=@apps/api",
+		"test": "turbo run test test:arch test:acceptance",
+		"verify": "turbo run //#check-scripts //#biome typecheck //#knip //#e18e test:arch test test:acceptance //#audit //#snyk",
+		"build": "turbo run build",
+		"start": "turbo run start --filter=@apps/api",
+		"check-scripts": "node scripts/check-dependency-scripts.mjs",
+		"biome": "biome check .",
+		"knip": "knip",
+		"e18e": "node scripts/e18e.mjs && e18e-cli analyze --log-level error",
+		"audit": "pnpm audit --audit-level=high",
+		"snyk": "node scripts/snyk.mjs"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.10",
+		"@e18e/cli": "0.7.0",
+		"@e18e/mcp": "0.0.11",
+		"husky": "9.1.7",
+		"knip": "5.64.2",
+		"lint-staged": "15.5.2",
+		"portless": "0.11.1",
+		"turbo": "2.9.18"
+	}
+}
