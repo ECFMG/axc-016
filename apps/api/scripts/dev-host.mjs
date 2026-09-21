@@ -1,15 +1,16 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { applyWorktreeSuffix } from '@cellix/local-dev/urls';
+import { applyWorktreeSuffix, buildPortlessUrl, PORTLESS_PORT } from '@cellix/local-dev/urls';
 
 const apiDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = join(apiDir, '../..');
 const worktreeName = process.env.WORKTREE_NAME || basename(repoRoot);
 const hostname = applyWorktreeSuffix('api.agentcourses.localhost', worktreeName);
+const publicHealthUrl = buildPortlessUrl(hostname, '/health');
 
 process.env.AXC_ENVIRONMENT ??= 'local';
-console.log(`AXC portless hostname: https://${hostname}/health`);
+console.log(`AXC portless URL: ${publicHealthUrl}`);
 console.log(`AXC worktree: ${worktreeName}`);
 console.log('Azure Functions host: func start --script-root deploy/');
 
@@ -18,7 +19,7 @@ if ((build.status ?? 1) !== 0) {
 	process.exit(build.status ?? 1);
 }
 
-spawnSync('pnpm', ['exec', 'portless', 'proxy', 'start', '--https', '-p', '1355'], {
+spawnSync('pnpm', ['exec', 'portless', 'proxy', 'start', '--https', '-p', String(PORTLESS_PORT)], {
 	cwd: repoRoot,
 	stdio: 'inherit',
 	env: process.env,

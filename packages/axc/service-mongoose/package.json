@@ -17,7 +17,9 @@
 	},
 	"dependencies": {
 		"@cellix/api-services-spec": "workspace:*",
-		"@cellix/mongoose-seedwork": "workspace:*",
+		"@cellix/mongoose-seedwork": "workspace:*"
+	},
+	"peerDependencies": {
 		"mongodb": "catalog:",
 		"mongoose": "catalog:"
 	},

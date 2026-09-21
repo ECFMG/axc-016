@@ -39,13 +39,13 @@ All of these go through Turborepo:
 
 | Command | What it does |
 | --- | --- |
-| `pnpm run dev` | Builds the API, then starts the Azure Functions host through portless. The public hostname is `api.agentcourses.<worktree>.localhost`, where `<worktree>` comes from `WORKTREE_NAME` or the directory name. `GET /health` is served by `func start` on the Rolldown bundle. |
+| `pnpm run dev` | Builds the API, then starts the Azure Functions host through portless. The public URL is `https://api.agentcourses.<worktree>.localhost:1355/health`, where `<worktree>` comes from `WORKTREE_NAME` or the directory name. The `:1355` port is the portless proxy. `GET /health` is served by `func start` on the Rolldown bundle. |
 | `pnpm run test` | Unit tests plus the Serenity/Cucumber healthcheck acceptance test and HTML report. |
 | `pnpm run verify` | Dependency script policy, Biome, TypeScript compilation, knip, `@e18e/cli`, architecture tests, unit tests, Serenity acceptance, `pnpm audit`, and a local Snyk attempt. |
 | `pnpm run build` | Rolldown-bundles the API and writes `apps/api/build/agentCourses-api.zip` for Azure Functions run-from-package. `host.json` clears the `/api` prefix so the route is `/health`. |
 | `pnpm run start` | Starts the built bundle with the Azure Functions host (`func start --script-root deploy/`). Environment is `local`. The port is `PORT` or 7071. |
 
-Parallel git worktrees each get their own portless hostname. Set `WORKTREE_NAME` when the directory name is not the worktree label you want.
+Parallel git worktrees each get their own portless URL, for example `https://api.agentcourses.axc-016.localhost:1355/health` and `https://api.agentcourses.axc-016-wt.localhost:1355/health`. Set `WORKTREE_NAME` when the directory name is not the worktree label you want. The dev log prints `AXC portless URL:` with that same `:1355` address.
 
 ## Gates
 
